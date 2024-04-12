@@ -1,6 +1,7 @@
 package mg.itu.tpbanquenaina4.service;
 
 import jakarta.annotation.sql.DataSourceDefinition;
+import jakarta.enterprise.context.Dependent;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -28,7 +29,7 @@ import mg.itu.tpbanquenaina4.entity.CompteBancaire;
             "driverClass=com.mysql.cj.jdbc.Driver"
         }
 )
-@RequestScoped
+@Dependent
 public class GestionnaireCompte {
 
     @PersistenceContext(unitName = "banquePU")
@@ -39,7 +40,7 @@ public class GestionnaireCompte {
         em.persist(compteBancaire);
     }
 
-    List<CompteBancaire> getAllComptes() {
+    public List<CompteBancaire> getAllComptes() {
         TypedQuery<CompteBancaire> query = em.createNamedQuery("CompteBancaire.findAll", CompteBancaire.class);
         return query.getResultList();
     }
