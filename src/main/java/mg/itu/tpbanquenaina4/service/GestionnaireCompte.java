@@ -1,7 +1,7 @@
 package mg.itu.tpbanquenaina4.service;
 
 import jakarta.annotation.sql.DataSourceDefinition;
-import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
@@ -29,7 +29,7 @@ import mg.itu.tpbanquenaina4.entity.CompteBancaire;
             "driverClass=com.mysql.cj.jdbc.Driver"
         }
 )
-@Dependent
+@ApplicationScoped
 public class GestionnaireCompte implements Serializable{
 
     @PersistenceContext(unitName = "banquePU")

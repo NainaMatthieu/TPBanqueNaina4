@@ -36,12 +36,6 @@ public class ListeComptes implements Serializable {
         if (allComptes == null) {
             allComptes = gestionnaireCompte.getAllComptes();
         }
-        System.out.println("---------------------------:::::::::::::--------------------------");
-        System.out.println("tayy");
-        for(int i=0;i<allComptes.size();i++){
-             System.out.println(allComptes.get(i));
-        }
-        System.out.println("---------------------------:::::::::::::--------------------------");
         return allComptes;
     }
 }
