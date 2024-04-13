@@ -16,13 +16,16 @@
                 <h:form>
                     <p:outputLabel for="inputIdSource" value="Id du compte source du transfert" />
                     <p:inputNumber id="inputIdSource" value="#{transfertArgent.idCompteSource}" class="inputTransfert" required="true" emptyValue="empty" />
+                    <h:message for="inputIdSource">
 
                     <p:outputLabel for="inputIdTarget" value="Id du compte destination du transfert" />
                     <p:inputNumber id="inputIdTarget" value="#{transfertArgent.idCompteTarget}" class="inputTransfert" required="true" emptyValue="empty" />
-                    
+                    <h:message for="inputIdTarget">
+
                     <p:outputLabel for="inputMontant" value="Montant du transfert" />
                     <p:inputNumber id="inputMontant" value="#{transfertArgent.montant}" class="inputTransfert" required="true" emptyValue="empty" />
-                    
+                    <h:message for="inputMontant">
+                            
                     <p:commandButton value="Transferer" action="#{transfertArgent.transferer()}"/>
 
                 </h:form>
