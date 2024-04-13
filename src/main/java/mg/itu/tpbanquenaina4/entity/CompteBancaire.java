@@ -27,7 +27,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "COMPTEBANCAIRE")
 @NamedQueries({
-    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c")
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c"),
+    @NamedQuery(name = "CompteBancaire.findById", query = "SELECT c FROM CompteBancaire c WHERE c.id = :id")
 })
 public class CompteBancaire implements Serializable {
 
@@ -58,7 +59,7 @@ public class CompteBancaire implements Serializable {
      *
      * @param montant Montant à déposer.
      */
-public void deposer(int montant) {
+    public void deposer(int montant) {
         solde += montant;
     }
 
