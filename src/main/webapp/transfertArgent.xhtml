@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/template_defaut.xhtml">
+
+            <ui:define name="top">
+                Transfert d'argent d'un compte à l'autre
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <p:outputLabel for="inputIdSource" value="Id du compte source du transfert" />
+                    <p:inputNumber id="inputIdSource" value="#{transfertArgent.idCompteSource}" class="inputTransfert" required="true" emptyValue="empty" />
+
+                    <p:outputLabel for="inputIdTarget" value="Id du compte destination du transfert" />
+                    <p:inputNumber id="inputIdTarget" value="#{transfertArgent.idCompteTarget}" class="inputTransfert" required="true" emptyValue="empty" />
+                    
+                    <p:outputLabel for="inputMontant" value="Montant du transfert" />
+                    <p:inputNumber id="inputMontant" value="#{transfertArgent.montant}" class="inputTransfert" required="true" emptyValue="empty" />
+                    
+                    <p:commandButton value="Transferer" action="#{transfertArgent.transferer()}"/>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

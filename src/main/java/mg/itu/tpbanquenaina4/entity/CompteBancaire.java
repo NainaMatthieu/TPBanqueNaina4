@@ -58,7 +58,7 @@ public class CompteBancaire implements Serializable {
      *
      * @param montant Montant à déposer.
      */
-    public void deposer(int montant) {
+public void deposer(int montant) {
         solde += montant;
     }
 

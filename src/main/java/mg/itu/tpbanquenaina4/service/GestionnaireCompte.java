@@ -30,7 +30,7 @@ import mg.itu.tpbanquenaina4.entity.CompteBancaire;
         }
 )
 @ApplicationScoped
-public class GestionnaireCompte implements Serializable{
+public class GestionnaireCompte implements Serializable {
 
     @PersistenceContext(unitName = "banquePU")
     private EntityManager em;
@@ -43,5 +43,23 @@ public class GestionnaireCompte implements Serializable{
     public List<CompteBancaire> getAllComptes() {
         TypedQuery<CompteBancaire> query = em.createNamedQuery("CompteBancaire.findAll", CompteBancaire.class);
         return query.getResultList();
+    }
+
+    public CompteBancaire findById(Long idCompteBancaire) {
+        return em.find(CompteBancaire.class, idCompteBancaire);
+    }
+
+    @Transactional
+    public void transferer(CompteBancaire source, CompteBancaire destination,
+            int montant) {
+        source.retirer(montant);
+        destination.deposer(montant);
+        update(source);
+        update(destination);
+    }
+
+    @Transactional
+    public CompteBancaire update(CompteBancaire compteBancaire) {
+        return em.merge(compteBancaire);
     }
 }
