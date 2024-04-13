@@ -6,8 +6,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
-import jakarta.enterprise.context.RequestScoped;
 import mg.itu.tpbanquenaina4.entity.CompteBancaire;
 
 /**
@@ -30,7 +30,7 @@ import mg.itu.tpbanquenaina4.entity.CompteBancaire;
         }
 )
 @Dependent
-public class GestionnaireCompte {
+public class GestionnaireCompte implements Serializable{
 
     @PersistenceContext(unitName = "banquePU")
     private EntityManager em;

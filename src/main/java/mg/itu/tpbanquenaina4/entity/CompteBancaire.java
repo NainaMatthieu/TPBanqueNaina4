@@ -27,7 +27,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "COMPTEBANCAIRE")
 @NamedQueries({
-      @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c")
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT c FROM CompteBancaire c")
 })
 public class CompteBancaire implements Serializable {
 
@@ -74,6 +74,15 @@ public class CompteBancaire implements Serializable {
         } else {
             solde = 0;
         }
+    }
+
+    /**
+     * Obtient le id du compte.
+     *
+     * @return Le id du compte.
+     */
+    public Long getId() {
+        return id;
     }
 
     /**
