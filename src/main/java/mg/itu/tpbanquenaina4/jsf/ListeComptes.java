@@ -6,6 +6,7 @@ import jakarta.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
 import mg.itu.tpbanquenaina4.entity.CompteBancaire;
+import mg.itu.tpbanquenaina4.jsf.util.Util;
 import mg.itu.tpbanquenaina4.service.GestionnaireCompte;
 
 /**
@@ -27,7 +28,7 @@ public class ListeComptes implements Serializable {
     public ListeComptes() {
     }
 
-     /**
+    /**
      * Retourne la liste des comptes bancaires
      *
      * @return La liste des comptes bancaires.
@@ -37,5 +38,11 @@ public class ListeComptes implements Serializable {
             allComptes = gestionnaireCompte.getAllComptes();
         }
         return allComptes;
+    }
+
+    public String supprimerCompte(CompteBancaire compteBancaire) {
+        gestionnaireCompte.supprimerCompte(compteBancaire);
+        Util.addFlashInfoMessage("Compte de " + compteBancaire.getNom() + " supprimé");
+        return "listeComptes?faces-redirect=true";
     }
 }
