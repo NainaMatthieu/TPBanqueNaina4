@@ -97,7 +97,7 @@ public class Mouvement implements Serializable {
     }
 
     public String enregistrerMouvement() {
-        if (typeMouvement.equals("****")) {
+        if (typeMouvement.equals("ajout")) {
             gestionnaireCompte.deposer(compte, montant);
         } else {
             gestionnaireCompte.retirer(compte, montant);
