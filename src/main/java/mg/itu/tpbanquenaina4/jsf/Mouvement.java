@@ -84,7 +84,7 @@ public class Mouvement implements Serializable {
             // entre ajout et retrait (le choix est requis dans la page mouvement.xhtml)
             return;
         }
-        if (valeurTypeMouvement.equals("****")) {
+        if (valeurTypeMouvement.equals("retrait")) {
             int retrait = (int) valeur;
             if (compte.getSolde() < retrait) {
                 FacesMessage message
