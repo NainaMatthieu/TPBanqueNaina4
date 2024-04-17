@@ -31,7 +31,7 @@ public class OperationBancaire implements Serializable {
     public OperationBancaire() {
     }
 
-    public OperationBancaire(String descritpion, LocalDateTime dateOperation, int montant) {
+    public OperationBancaire(String descritpion, int montant) {
         this.descritpion = descritpion;
         this.dateOperation = LocalDateTime.now();
         this.montant = montant;
