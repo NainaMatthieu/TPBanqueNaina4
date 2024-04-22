@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="jakarta.faces.facelets"
       xmlns:f="jakarta.faces.core"
-      xmlns:h="jakarta.faces.html">
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -25,7 +26,45 @@
                 <h1>Historique des opérations sur le compte de #{operationCompte.compte.nom}</h1>
 
                 <h:form>
-                    
+                    <p:dataTable value="#{operationCompte.compte.operations}"
+                                 var="item"
+                                 widgetVar="compteTable"
+                                 emptyMessage="Aucune opération avec ce critère"
+                                 paginator="true"
+                                  paginatorPosition="bottom"
+                                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {CurrentPageReport}">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </p:column>
+
+                        <p:column sortBy="#{item.description}">
+                            <f:facet name="header">
+                                <h:outputText value="Déscription"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </p:column>
+                        <p:column sortBy="#{item.dateOperation}">
+                            <f:facet name="header">
+                                <h:outputText value="Date Opération"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOperation}">
+                                <f:convertDateTime
+                                    type="localDateTime"
+                                    pattern="dd/MM/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column sortBy="#{item.montant}">
+                            <f:facet name="header">
+                                <h:outputText value="Montant"/>
+                            </f:facet>
+                            <h:outputText value="#{item.montant}">
+                                <f:convertNumber pattern="###,###,##0"/>
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
             </ui:define>
 

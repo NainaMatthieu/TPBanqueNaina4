@@ -24,15 +24,15 @@ public class OperationBancaire implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String descritpion;
+    private String description;
     private LocalDateTime dateOperation;
     private int montant;
 
     public OperationBancaire() {
     }
 
-    public OperationBancaire(String descritpion, int montant) {
-        this.descritpion = descritpion;
+    public OperationBancaire(String description, int montant) {
+        this.description = description;
         this.dateOperation = LocalDateTime.now();
         this.montant = montant;
     }
@@ -41,12 +41,12 @@ public class OperationBancaire implements Serializable {
         return id;
     }
 
-    public String getDescritpion() {
-        return descritpion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescritpion(String descritpion) {
-        this.descritpion = descritpion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getDateOperation() {
