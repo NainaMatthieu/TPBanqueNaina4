@@ -15,6 +15,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 @Entity
 @Table(name = "COMPTEBANCAIRE")
 @NamedQueries({
-    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT DISTINCT c FROM CompteBancaire c JOIN FETCH c.operations"),
+    @NamedQuery(name = "CompteBancaire.findAll", query = "SELECT DISTINCT c FROM CompteBancaire c JOIN FETCH c.operations  ORDER BY c.id ASC"),
     @NamedQuery(name = "CompteBancaire.findById", query = "SELECT c FROM CompteBancaire c JOIN FETCH c.operations WHERE c.id = :id")
 })
 public class CompteBancaire implements Serializable {
@@ -46,6 +47,9 @@ public class CompteBancaire implements Serializable {
     private int solde;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OperationBancaire> operations = new ArrayList<>();
+
+    @Version
+    private int version;
 
     public CompteBancaire() {
     }
@@ -88,7 +92,7 @@ public class CompteBancaire implements Serializable {
         } else {
             solde = 0;
         }
-        operations.add(new OperationBancaire("Débit", montant));
+        operations.add(new OperationBancaire("Débit", -montant));
     }
 
     /**
